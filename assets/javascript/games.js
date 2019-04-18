@@ -1,72 +1,111 @@
 
-var CG = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var won = 0;
-var lost = 0;
-var wrong =0;
-var userGuess = []
-var UG = ""
-var alreadyGuessed=false;
-var html =
-"<p>wins: " + won + "</p>" +
-"<p>losses: " + lost + "</p>" +
-"<p>Guessed so far: " + userGuess + "</p>";
+var wordsList = ["darkness", "light", "crystals", "strength", "jennifer", "success", "failure", "blood", "sweat", "tears", "winning", "pumpkin", "power", "money", "wealth", "fire", "water", "earth", "wind", "confusion", "clarity", "love", "greed", "sleep", "journey", "excitment"];
+var chosenWord = "";
+var lettersInChosenWord = [];
+var numBlanks = 0;
+var blanksAndSuccesses = [];
+var wrongGuesses = [];
 
-document.getElementById("won").innerHTML = html 
+// Game counters
+var winCounter = 0;
+var lossCounter = 0;
+var numGuesses = 9;
 
-//Program thinks of a random letter
-var computerGuess = CG[Math.floor(Math.random() * CG.length)];
- console.log(computerGuess)
+function startGame() {
+  numGuesses = 9;
+  chosenWord = wordsList[Math.floor(Math.random() * wordsList.length)];
+  lettersInChosenWord = chosenWord.split("");
+  numBlanks = lettersInChosenWord.length;
 
-//Program asks user to press a letter on the keyboard (in HTML)
-document.onkeyup = function (event) {
-    UG = event.key;
-    if (event.keyCode <= 64 || event.keyCode >= 91){}
-    else{
-    for (var x = 0; x<userGuess.length;x++){
-        if(userGuess[x]===UG){
-            alreadyGuessed=true;
-        }
-    }
-    if (alreadyGuessed === true) {
-    console.log ("Already Guessed");
-    alreadyGuessed = false;
+  console.log(chosenWord);
 
-    }
-    else { userGuess.push(UG)
-    
-//Program compares the letter pressed to the random letter in the memory
-//If guessed letter matches random letter the user wins
-    if (UG === computerGuess) {won++; 
-    computerGuess = CG[Math.floor(Math.random() * CG.length)];
-    console.log(computerGuess)}
-    else {wrong++;
-    }
-    if (wrong === 9) {lost++}
-    console.log(wrong)
-    var html =
-"<p>wins: " + won + "</p>" +
-"<p>losses: " + lost + "</p>" +
-"<p>Guessed so far: " + userGuess + "</p>";
 
-document.getElementById("won").innerHTML = html
-}
-}
+  blanksAndSuccesses = [];
+  wrongGuesses = [];
+
+  for (var i = 0; i < numBlanks; i++) {
+    blanksAndSuccesses.push("_");
+  }
+
+
+  console.log(blanksAndSuccesses);
+
+
+
+  document.getElementById("guesses-left").innerHTML = "Guesses Left: " + numGuesses;
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+  document.getElementById("wrong-guesses").innerHTML = "Letters Guessed: " + wrongGuesses.join(" ");
 }
 
-// //If letter guess does not match comuputers letter then user needs to guess again and has up to 9 tries
-//     // if (userGuess != computerGuess)
-//     // }
-//     // else () {lost++;
+function checkLetters(letter) {
+  var letterInWord = false;
 
-//     for (var i = 0; i < 9; i++) {
-//         userGuess !== computerGuess, i; 
-//         {lost++;
-//         }
-//     }
+  for (var i = 0; i < numBlanks; i++) {
+    if (chosenWord[i] === letter) {
+      letterInWord = true;
+    }
+  }
 
-// //Guessed letter will appear in the "guessed so far bank"
-// var guesses = ["x", "y", "z"]
+  if (letterInWord) {
 
+    for (var j = 0; j < numBlanks; j++) {
 
+      if (chosenWord[j] === letter) {
+        blanksAndSuccesses[j] = letter;
+      }
+    }
+    console.log(blanksAndSuccesses);
+  }
+  else {
+    wrongGuesses.push(letter);
+    numGuesses--;
+  }
+}
 
-// //If user guesses incorrectly all 9 times user loses
+function roundComplete() {
+
+  console.log("WinCount: " + winCounter + " | LossCount: " + lossCounter + " | NumGuesses: " + numGuesses);
+
+  document.getElementById("guesses-left").innerHTML = "Guesses Left: " + numGuesses;
+  document.getElementById("word-blanks").innerHTML = blanksAndSuccesses.join(" ");
+  document.getElementById("wrong-guesses").innerHTML = "Letters Guessed: " + wrongGuesses.join(" ");
+
+  if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
+    winCounter++;
+    alert("You win!");
+
+    document.getElementById("win-counter").innerHTML = "Games Won: " + winCounter;
+    startGame();
+  }
+
+  // If we've run out of guesses..
+  else if (numGuesses === 0) {
+    // Add to the loss counter.
+    lossCounter++;
+    // Give the user an alert.
+    alert("You lose");
+
+    // Update the loss counter in the HTML.
+    document.getElementById("loss-counter").innerHTML = "Games Won: " + lossCounter;
+    // Restart the game.
+    startGame();
+  }
+
+}
+
+// MAIN PROCESS (THIS IS THE CODE THAT CONTROLS WHAT IS ACTUALLY RUN)
+// ==================================================================================================
+
+// Starts the Game by running the startGame() function
+startGame();
+
+// Then initiate the function for capturing key clicks.
+document.onkeyup = function(event) {
+  // Converts all key clicks to lowercase letters.
+  var letterGuessed = String.fromCharCode(event.which).toLowerCase();
+  // Runs the code to check for correctness.
+  checkLetters(letterGuessed);
+  // Runs the code after each round is done.
+  roundComplete();
+};
+

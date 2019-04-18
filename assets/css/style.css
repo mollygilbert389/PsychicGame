@@ -1,0 +1,28 @@
+html {
+    text-align: center;
+    background-image: url("../images/Peering-into-the-crystal-ball-A-look-at-mortgage-industry-predictions-1080x675.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Raleway', sans-serif;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+#score {
+    display: inline-block;
+    display: flex;
+    color: white;
+}
+
+#win-counter {
+    margin-right: 25px;
+}
+
+#wrapper {
+    margin-top: 8%;
+
+}
