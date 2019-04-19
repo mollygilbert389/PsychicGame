@@ -72,22 +72,94 @@ function roundComplete() {
 
   if (lettersInChosenWord.toString() === blanksAndSuccesses.toString()) {
     winCounter++;
-    alert("You win!");
+    if (chosenWord === "darkness") {
+      alert("You win! Your Fortune: Uh oh, there is darkness in your future. Beware.");
+    }
+    if (chosenWord === "light") {
+      alert("You win! Your Fortune: I see light. Understanding or knowledge is on it's way to you.");
+    }
+    if (chosenWord === "crystals") {
+      alert("You win! Your Fortune: Hmmm. Very interesting. I see crystals. You are in need of healing! Or you will come into some wealth. Only the crystals know.");
+    }
+    if (chosenWord === "strength") {
+      alert("You win! Your Fortune: I see a surge of strenth about to burst within you!");
+    }
+    if (chosenWord === "jennifer") {
+      alert("You win! Your Fortune: Not Jennifer! She's evil, do not listen to her. You must stay on your path.");
+    }
+    if (chosenWord === "success") {
+      alert("You win! Your Fortune: Success is on it's way to you!");
+    }
+    if (chosenWord === "failure") {
+      alert("You win! Your Fortune: Uh oh... failure is in your future. Do not worry, after failure comes growth!");
+    }
+    if (chosenWord === "blood") {
+      alert("You win! Your Fortune: Blood. Very interesting. Blood is deep. It is powerful. It can be dangerous. Be careful.");
+    }
+    if (chosenWord === "sweat") {
+      alert("You win! Your Fortune: Hard work is in store for you. Whether or not you will reap from the fruit of labor is yet to be determined.");
+    }
+    if (chosenWord === "tears") {
+      alert("You win! Your Fortune: I see tears.");
+    }
+    if (chosenWord === "winning") {
+      alert("You win! Your Fortune: I see a win. Well that was a fast fortune indeed.");
+    }
+    if (chosenWord === "pumpkin") {
+      alert("You win! Your Fortune: A... a pumpkin? How strange. What does it mean? Maybe something funny will happen...");
+    }
+    if (chosenWord === "power") {
+      alert("You win! Your Fortune: I see a surge in power. Use it wisely");
+    }
+    if (chosenWord === "money") {
+      alert("You win! Your Fortune: I see.... Money! Not sure if you are spending it or receiving it though...");
+    }
+    if (chosenWord === "wealth") {
+      alert("You win! Your Fortune: Wealth! Wealth is on it' way to you!");
+    }
+    if (chosenWord === "fire") {
+      alert("You win! Your Fortune: I see fire. Cleansing, passion, renewal, burning. Some words to consider.");
+    }
+    if (chosenWord === "water") {
+      alert("You win! Your Fortune: Ahh soothing water! Relaxtion, power, serenity. Some words to consider.");
+    }
+    if (chosenWord === "earth") {
+      alert("You win! Your Fortune: Mighty Earth. Strength, endurance, grounded. Some words to consider.");
+    }
+    if (chosenWord === "wind") {
+      alert("You win! Your Fortune: How fun! Wind! Curiosity, playfulness, chnage. Some words to consider.");
+    }
+    if (chosenWord === "confusion") {
+      alert("You win! Your Fortune: Confusion. Hmmm, I'm not sure how to read that.");
+    }
+    if (chosenWord === "clarity") {
+      alert("You win! Your Fortune: I see clarity in your future. You will learn the truth.");
+    }
+    if (chosenWord === "love") {
+      alert("You win! Your Fortune: Love. How sweet. I see more love for you.");
+    }
+    if (chosenWord === "greed") {
+      alert("You win! Your Fortune: Uh oh, greed. You will lust after something you cannot have.");
+    }
+    if (chosenWord === "sleep") {
+      alert("You win! Your Fortune: You are in for some much needed rest.");
+    }
+    if (chosenWord === "journey") {
+      alert("You win! Your Fortune: A journey! How exciting! Remind yourself to enjoy the journey as well as the destination.");
+    }
+    if (chosenWord === "excitment") {
+      alert("You win! Your Fortune: Excitment!!! It doesn't get any more clear than that!");
+    }
+
 
     document.getElementById("win-counter").innerHTML = "Games Won: " + winCounter;
     startGame();
   }
 
-  // If we've run out of guesses..
   else if (numGuesses === 0) {
-    // Add to the loss counter.
     lossCounter++;
-    // Give the user an alert.
-    alert("You lose");
-
-    // Update the loss counter in the HTML.
+    alert("You lose. Guess your future is a mystery.");
     document.getElementById("loss-counter").innerHTML = "Games Won: " + lossCounter;
-    // Restart the game.
     startGame();
   }
 
@@ -99,13 +171,9 @@ function roundComplete() {
 // Starts the Game by running the startGame() function
 startGame();
 
-// Then initiate the function for capturing key clicks.
 document.onkeyup = function(event) {
-  // Converts all key clicks to lowercase letters.
   var letterGuessed = String.fromCharCode(event.which).toLowerCase();
-  // Runs the code to check for correctness.
   checkLetters(letterGuessed);
-  // Runs the code after each round is done.
   roundComplete();
 };
 
