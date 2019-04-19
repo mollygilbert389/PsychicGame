@@ -159,7 +159,7 @@ function roundComplete() {
   else if (numGuesses === 0) {
     lossCounter++;
     alert("You lose. Guess your future is a mystery.");
-    document.getElementById("loss-counter").innerHTML = "Games Won: " + lossCounter;
+    document.getElementById("loss-counter").innerHTML = "Games Lost: " + lossCounter;
     startGame();
   }
 
