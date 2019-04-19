@@ -1,5 +1,5 @@
 
-var wordsList = ["darkness", "light", "crystals", "strength", "jennifer", "success", "failure", "blood", "sweat", "tears", "winning", "pumpkin", "power", "money", "wealth", "fire", "water", "earth", "wind", "confusion", "clarity", "love", "greed", "sleep", "journey", "excitment"];
+var wordsList = ["darkness", "light", "crystals", "strength", "jessica", "success", "failure", "blood", "sweat", "tears", "winning", "pumpkin", "power", "money", "wealth", "fire", "water", "earth", "wind", "confusion", "clarity", "love", "greed", "sleep", "journey", "excitment"];
 var chosenWord = "";
 var lettersInChosenWord = [];
 var numBlanks = 0;
@@ -84,8 +84,8 @@ function roundComplete() {
     if (chosenWord === "strength") {
       alert("You win! Your Fortune: I see a surge of strenth about to burst within you!");
     }
-    if (chosenWord === "jennifer") {
-      alert("You win! Your Fortune: Not Jennifer! She's evil, do not listen to her. You must stay on your path.");
+    if (chosenWord === "jessica") {
+      alert("You win! Your Fortune: Not Jessica! She's evil, do not listen to her. You must stay on your path.");
     }
     if (chosenWord === "success") {
       alert("You win! Your Fortune: Success is on it's way to you!");
