@@ -17,8 +17,6 @@ function startGame() {
   lettersInChosenWord = chosenWord.split("");
   numBlanks = lettersInChosenWord.length;
 
-  console.log(chosenWord);
-
 
   blanksAndSuccesses = [];
   wrongGuesses = [];
