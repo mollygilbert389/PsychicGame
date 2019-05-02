@@ -104,7 +104,7 @@ function roundComplete() {
       alert("You win! Your Fortune: I see a win. Well that was a fast fortune indeed.");
     }
     if (chosenWord === "pumpkin") {
-      alert("You win! Your Fortune: A... a pumpkin? How strange. What does it mean? Maybe something funny will happen...");
+      alert("You win! Your Fortune: A... a pumpkin? How strange. I see a cat nap in your future.");
     }
     if (chosenWord === "power") {
       alert("You win! Your Fortune: I see a surge in power. Use it wisely");
